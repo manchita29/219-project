@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* CSS styles here */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('book2.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #333;
+        }
+
+        header {
+            background-color: #ffffff;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #007bff;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .payment-method {
+            margin-bottom: 30px;
+        }
+
+        .payment-method h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .payment-method ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .payment-method ul li {
+            margin-right: 20px;
+        }
+
+        .payment-method ul li:last-child {
+            margin-right: 0;
+        }
+
+        .payment-method ul li img {
+            height: 50px;
+            margin-right: 10px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+            cursor: pointer;
+        }
+
+        .payment-method ul li img:hover {
+            filter: none;
+        }
+
+        .payment-form {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .payment-form input {
+            width: 60%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .payment-form button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .payment-form button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        footer nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+
+        footer nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        footer nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        footer nav ul li a:hover {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="#" class="logo"> <i class="fas fa-book"></i> Books4MU </a>
+            
+        </div>
+        <nav>
+            <ul>
+                <li><a href="hi.html">Home</a></li>
+                <li><a href="hi.html">About Us</a></li>
+                <li><a href="hi.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Secure Payment</h1>
+        <section class="payment-method">
+            <h2>Choose your payment method</h2>
+            <ul>
+                <li><img src="paytem.avif" alt="Paytm" onclick="showPaymentForm('paytm')"></li>
+                <li><img src="phonepay.png" alt="PhonePe" onclick="showPaymentForm('phonepe')"></li>
+                <li><img src="6963703.png" alt="Credit Card" onclick="showPaymentForm('creditcard')"></li>
+            </ul>
+        </section>
+
+        <section id="paytmForm" class="payment-form">
+            <h2>Scan Paytm QR Code</h2>
+            <img src="paytm_qr_code.png" alt="Paytm QR Code">
+            <!-- Additional instructions for Paytm payment -->
+            <button onclick="submitPayment('paytm')">Submit Payment</button>
+        </section>
+
+        <section id="phonepeForm" class="payment-form">
+            <h2>Scan PhonePe QR Code</h2>
+            <img src="phonepe_qr_code.png" alt="PhonePe QR Code">
+            <!-- Additional instructions for PhonePe payment -->
+            <button onclick="submitPayment('phonepe')">Submit Payment</button>
+        </section>
+
+        <section id="creditcardForm" class="payment-form">
+            <h2>Enter Credit Card Details</h2>
+            <form>
+                <input type="text" placeholder="Name on Card">
+                <br>
+                <input type="text" placeholder="Account Number (12 digits)" maxlength="12">
+                <br>
+                <input type="text" placeholder="Expiration Date (MM/YYYY)">
+                <br>
+                <input type="text" placeholder="CVV (3 digits)" maxlength="3">
+            </form>
+            <button onclick="submitPayment('creditcard')">Submit Payment</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>Contact us at: support@example.com</p>
+        <nav>
+            <ul>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Refund Policy</a></li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script>
+        function showPaymentForm(method) {
+            document.querySelectorAll('.payment-form').forEach(form => {
+                form.style.display = 'none';
+            });
+
+            document.getElementById(method + 'Form').style.display = 'block';
+        }
+
+        function submitPayment(method) {
+            // Perform payment submission logic here
+            console.log('Payment submitted for method: ' + method);
+
+            // Show success message
+            alert('Payment successfully submitted!');
+
+            // Redirect to hi.html
+            window.location.href = 'hi.html';
+        }
+    </script>
+</body>
+</html>
